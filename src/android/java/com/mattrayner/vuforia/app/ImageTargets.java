@@ -196,7 +196,6 @@ public class ImageTargets extends Activity implements ApplicationControl
 
         // Load any sample specific textures:
         mTextures = new Vector<Texture>();
-        loadTextures();
 
         mIsDroidDevice = android.os.Build.MODEL.toLowerCase().startsWith(
             "droid");
@@ -258,21 +257,6 @@ public class ImageTargets extends Activity implements ApplicationControl
         Log.d(LOGTAG, "onStop");
         super.onStop();
 
-    }
-    
-    // We want to load specific textures from the APK, which we will later use
-    // for rendering.
-    
-    private void loadTextures()
-    {
-        mTextures.add(Texture.loadTextureFromApk("TextureTeapotBrass.png",
-            getAssets()));
-        mTextures.add(Texture.loadTextureFromApk("TextureTeapotBlue.png",
-            getAssets()));
-        mTextures.add(Texture.loadTextureFromApk("TextureTeapotRed.png",
-            getAssets()));
-        mTextures.add(Texture.loadTextureFromApk("ImageTargets/Buildings.jpeg",
-            getAssets()));
     }
 
     // Called when the activity will start interacting with the user.
@@ -389,7 +373,6 @@ public class ImageTargets extends Activity implements ApplicationControl
         mGlView.init(translucent, depthSize, stencilSize);
 
         mRenderer = new ImageTargetRenderer(this, vuforiaAppSession, mTargets);
-        mRenderer.setTextures(mTextures);
         mGlView.setRenderer(mRenderer);
 
     }
