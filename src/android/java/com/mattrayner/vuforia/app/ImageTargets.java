@@ -196,6 +196,7 @@ public class ImageTargets extends Activity implements ApplicationControl
 
         // Load any sample specific textures:
         mTextures = new Vector<Texture>();
+        loadTextures();
 
         mIsDroidDevice = android.os.Build.MODEL.toLowerCase().startsWith(
             "droid");
